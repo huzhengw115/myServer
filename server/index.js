@@ -25,17 +25,15 @@ function start (request, routers) {
   // 页面路由跳转
   for (var m = 0; m < routers.length; ++m) {
     app.get(routers[m].path, function (req, res) {
-      for (var n = 0; n< routers.length; ++n) {
+      for (var n = 0; n < routers.length; ++n) {
         if (req.path === routers[n].path) {
           // res.sendFile(path.resolve('src/pages/home/index.html'))
           res.sendFile(path.resolve('src/pages/' + routers[n].templateUrl))
+          return
         }
       }
     })
   }
-  // app.get('/index.html', function (req, res) {
-  //   res.sendFile( __dirname + "/" + "index.html" )
-  // })
 
   // get提交表单
   app.get('/process_get', function (req, res) {

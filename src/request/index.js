@@ -2,22 +2,26 @@ var requestUrl = [{
   name: 'home',
   type: [{
     name: 'list',
-    event: '列表'
+    type: 'add',
+    id: 1
   }]
 }, {
   name: 'news',
   type: [{
     name: 'hot',
-    event: '热门'
+    type: 'delete',
+    id: 1
   }, {
     name: 'new',
-    event: '最新'
+    type: 'read',
+    id: 1
   }]
 }, {
   name: 'goods',
   type: [{
     name: 'hot',
-    event: '商机'
+    type: 'change',
+    id: 1
   }]
 }]
 

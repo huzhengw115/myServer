@@ -1,7 +1,7 @@
-var urlRequest = require('../../src/request')
+var url = require('../../src/request').requestUrl
+var operation = require('./operation').operation
 
 function request (req, res) {
-  var url = urlRequest.requestUrl
 
   var apiName = req.query.name
   var apiType = req.query.type
@@ -12,8 +12,22 @@ function request (req, res) {
       var urlType = url[i].type
       for (var m = 0; m < urlType.length; ++m) {
         if (urlType[m].name === apiType) {
-          console.log(urlType[m].event)
-          res.send('返回')
+          var operationType = urlType[m].type
+          switch (operationType) {
+            case 'add':
+              operation.add()
+              break
+            case 'delete':
+              operation.delete()
+              break
+            case 'read':
+              operation.read()
+            case 'change':
+              operation.change()
+            default:
+              console.log('err')
+          }
+          res.end()
           return
         }
       }
